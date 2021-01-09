@@ -4,10 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { UserPageRoutingModule } from './user-routing.module';
+import { LoginPageRoutingModule } from './login-routing.module';
 
-import { UserPage } from './user.page';
-
+import { LoginPage } from './login.page';
 import { HeaderComponent } from 'src/app/components/header/header.component';
 
 @NgModule({
@@ -16,8 +15,8 @@ import { HeaderComponent } from 'src/app/components/header/header.component';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    UserPageRoutingModule
+    LoginPageRoutingModule
   ],
-  declarations: [UserPage,HeaderComponent]
+  declarations: [LoginPage,HeaderComponent]
 })
-export class UserPageModule {}
+export class LoginPageModule {}

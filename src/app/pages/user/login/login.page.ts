@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, Validators,FormBuilder, FormGroup } from "@angular/forms";
 
+
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.page.html',
-  styleUrls: ['./user.page.scss'],
+  selector: 'app-login',
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
 })
-
-
-export class UserPage implements OnInit {
+export class LoginPage implements OnInit {
 
   private PLAT_FORM_CREATE: {[key: string]: AbstractControl} = {
     name: new FormControl(null, [Validators.required]),
@@ -32,5 +31,4 @@ export class UserPage implements OnInit {
     }
     console.log("send",this.loginForm.value)
   }
-
 }

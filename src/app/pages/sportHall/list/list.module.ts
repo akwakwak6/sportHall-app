@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
-import { HomePage } from './home.page';
 
-import { HomePageRoutingModule } from './home-routing.module';
+import { IonicModule } from '@ionic/angular';
+
+import { ListPageRoutingModule } from './list-routing.module';
+
+import { ListPage } from './list.page';
 
 import { HeaderComponent } from 'src/app/components/header/header.component';
 
@@ -13,8 +15,8 @@ import { HeaderComponent } from 'src/app/components/header/header.component';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    ListPageRoutingModule,
   ],
-  declarations: [HomePage,HeaderComponent]
+  declarations: [ListPage,HeaderComponent]
 })
-export class HomePageModule {}
+export class ListPageModule {}
