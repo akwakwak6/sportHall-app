@@ -44,12 +44,11 @@ export class BookingApiService {
     })
   }
 
-  /*
 
-  sendGet<T>(path:string) : Observable<> {
-    return this._httpClient.get<T>(this.baseURL+path,  { headers: this.headers })
+  sendGet(path:string) : Observable<any> {
+    return this._httpClient.get<any>(this.baseURL+path,  { headers: this.headers })
   }
-
+/*
   getAndSetData<T,U>(path:string,data: U) : Observable<T>{
     return this._httpClient.post<T>(this.baseURL+path,data,  { headers: this.headers })
   }

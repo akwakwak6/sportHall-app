@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {BookingApiService} from 'src/app/services/booking-api.service'
+import {SportHall} from 'src/app/models/sportHall.model'
 
 @Component({
   selector: 'app-list',
@@ -19,12 +21,15 @@ export class ListPage implements OnInit {
       { title: 'event 6', date: '2021-01-02' }
     ]
   };*/
-
+  sportHallList:SportHall = null
   
 
-  constructor() { }
+  constructor(private bkAPI:BookingApiService) { }
 
   ngOnInit() {
+    this.bkAPI.sendGet("sportHall")
+    .subscribe(l => this.sportHallList=l)
+
 
   }
 

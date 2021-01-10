@@ -13,6 +13,7 @@ import { HeaderComponent } from 'src/app/components/header/header.component';
 import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
 import interactionPlugin from '@fullcalendar/interaction'; // a plugin
+import {CardSportHallComponent} from "src/app/components/card-sport-hall/card-sport-hall.component"
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -27,6 +28,6 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ListPageRoutingModule,
     FullCalendarModule,
   ],
-  declarations: [ListPage,HeaderComponent]
+  declarations: [ListPage,HeaderComponent,CardSportHallComponent]
 })
 export class ListPageModule {}
