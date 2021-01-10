@@ -1,0 +1,29 @@
+<app-header></app-header>
+
+<ion-content>
+
+    <form [formGroup]="addForm" (submit)="handleSubmitAction()" class="form-center">
+        <ion-item>
+          <ion-label position="floating">Nom</ion-label>
+          <ion-input formControlName="name" ></ion-input>
+          <small *ngIf="isSubmitted && formControls.name.errors">doit avoir un nom</small>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Adresse</ion-label>
+          <ion-input formControlName="address" ></ion-input>
+          <small *ngIf="isSubmitted && formControls.address.errors">doit avoir une adresse</small>
+        </ion-item>
+
+        <ion-item className="ion-margin">
+          <ion-label position="stacked">Image</ion-label>
+          <input className="ion-margin" type="file" formControlName="mainPicture" accept="image/png, image/jpeg" (change)="loadFile($event)" >
+              <ion-thumbnail *ngIf="mainPicture" slot="start">
+                  <ion-img src=" {{mainPicture}}"></ion-img>
+              </ion-thumbnail>
+          <small *ngIf="isSubmitted && formControls.mainPicture.errors">no picture</small>
+        </ion-item>
+
+        <ion-button type="submit" shape="block" class="ion-margin">OK</ion-button>
+      </form>
+
+</ion-content>

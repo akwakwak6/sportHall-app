@@ -1,22 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AdminPage } from './admin.page';
+import { AddPage } from './add.page';
 import { HeaderComponent } from 'src/app/components/header/header.component';
-import { AdminPageRoutingModule } from './admin-routing.module';
+import { AddPageRoutingModule }  from './add-routing.module'
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     FormsModule,
     IonicModule,
-    AdminPageRoutingModule
+    AddPageRoutingModule
   ],
-  declarations: [AdminPage,HeaderComponent]
+  declarations: [AddPage,HeaderComponent]
 })
-export class AdminPageModule {}
-
-
+export class AddPageModule {}

@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit,OnDestroy  {
     this.userSub.unsubscribe()
   }
   disconnect(){
-    console.log("disconnect")
+    console.log("disconnect")//TODO DIsconnect User
   }
 
 }

@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'user/roles/admin',
     loadChildren: () => import('./pages/user/roles/admin/admin.module').then( m => m.AdminPageModule)
   },
+  {
+    path: 'add',
+    loadChildren: () => import('./pages/sportHall/add/add.module').then( m => m.AddPageModule)
+  },
 ];
 
 @NgModule({

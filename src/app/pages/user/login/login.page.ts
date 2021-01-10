@@ -11,7 +11,7 @@ import { Router } from '@angular/router'
 })
 export class LoginPage implements OnInit {
 
-  private PLAT_FORM_CREATE: {[key: string]: AbstractControl} = {
+  private PLAT_FORM_CREATE: {[key: string]: AbstractControl} = {//TODO remove default name & pwd => change labell name & msg error
     mail: new FormControl("admin@com", [Validators.required]),
     password: new FormControl("admin", [Validators.required])
   }
