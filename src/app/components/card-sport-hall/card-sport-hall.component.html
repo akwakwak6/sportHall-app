@@ -1,4 +1,4 @@
-<ion-card className="card">
+<ion-card className="card" [routerLink]="['/detail/'+sh.id]">
   <ion-img className="cardImg" src="{{sh.mainPicture}}"></ion-img>
   <ion-card-header>
     <ion-card-title>{{sh.name}}</ion-card-title>

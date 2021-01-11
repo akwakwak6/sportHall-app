@@ -9,18 +9,6 @@ import {SportHall} from 'src/app/models/sportHall.model'
 })
 export class ListPage implements OnInit {
 
-  /*calendarOptions: CalendarOptions  = {
-    initialView: 'dayGridMonth',
-    dateClick: this.handleDateClick.bind(this), // bind is important!
-    events: [
-      { title: 'event 1', date: '2021-01-02' },
-      { title: 'event 2', date: '2021-01-02' },
-      { title: 'event 3', date: '2021-01-02' },
-      { title: 'event 4', date: '2021-01-02' },
-      { title: 'event 5', date: '2021-01-02' },
-      { title: 'event 6', date: '2021-01-02' }
-    ]
-  };*/
   sportHallList:SportHall = null
   
 
@@ -32,9 +20,5 @@ export class ListPage implements OnInit {
 
 
   }
-
-  /*handleDateClick(s: any){
-    console.log("click",s)
-  }*/
 
 }

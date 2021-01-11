@@ -1,9 +1,13 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>detail</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header></app-header>
 
 <ion-content>
-
+    <div *ngIf="sportHall">
+        <h1>{{sportHall.name}}</h1>
+        <ion-img className="cardImg" src="{{sportHall.mainPicture}}"></ion-img>
+        <p>{{sportHall.address}}</p>
+    </div>
+    <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+    <div *ngIf="sportHall">
+        <p *ngFor="let b of sportHall.Bookings" >{{b.start | date}} to {{b.end | date}} - {{b.message}}</p>
+    </div>
 </ion-content>
