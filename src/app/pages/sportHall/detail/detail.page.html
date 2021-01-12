@@ -8,6 +8,7 @@
     </div>
     <full-calendar #calendar [options]="calendarOptions"></full-calendar>
     <div *ngIf="sportHall">
+        <ion-button [routerLink]="['/addbooking/'+sportHall.id]">Ajouter nouveau évènement</ion-button>
         <p *ngFor="let b of sportHall.Bookings" >{{b.start | date}} to {{b.end | date}} - {{b.message}}</p>
     </div>
 </ion-content>

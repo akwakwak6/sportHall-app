@@ -1,0 +1,21 @@
+<app-header></app-header>
+
+<ion-content>
+    <form [formGroup]="eventForm" (submit)="handleSubmitAction()" class="form-center">
+        <ion-item>
+            <ion-label>début</ion-label>
+            <ion-datetime formControlName="start" display-format="DD MMM, YYYY HH:mm" picker-format="DD MMM, YYYY HH:mm"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label>fin</ion-label>
+            <ion-datetime formControlName="end" display-format="DD MMM, YYYY HH:mm" picker-format="DD MMM, YYYY HH:mm"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Nom de l'évènement</ion-label>
+            <ion-input formControlName="message"></ion-input>
+            <small>pas obligatoire</small>
+        </ion-item>
+        <ion-button type="submit" shape="block" class="ion-margin">OK</ion-button>
+    </form>
+
+</ion-content>

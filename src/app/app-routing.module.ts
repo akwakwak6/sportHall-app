@@ -28,6 +28,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/user/roles/admin/admin.module').then( m => m.AdminPageModule)
   },
   {
+    path: 'addbooking/:id',
+    loadChildren: () => import('./pages/sportHall/add-booking/add-booking.module').then( m => m.AddBookingPageModule)
+  },
+  {
     path: 'add',
     loadChildren: () => import('./pages/sportHall/add/add.module').then( m => m.AddPageModule)
   },

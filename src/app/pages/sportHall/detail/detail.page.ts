@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute  } from '@angular/router'
 import {BookingApiService} from 'src/app/services/booking-api.service'
 import {SportHall,getSportHall} from 'src/app/models/sportHall.model'
@@ -33,7 +33,7 @@ export class DetailPage implements OnInit {
 
     }
 
-  constructor(private route: ActivatedRoute,private bkAPI:BookingApiService,private elementRef: ElementRef ) { }
+  constructor(private route: ActivatedRoute,private bkAPI:BookingApiService) { }
 
   ngOnInit() {
 
