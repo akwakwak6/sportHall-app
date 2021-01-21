@@ -39,9 +39,7 @@ export class AddPage implements OnInit {
     .then(r => {
       this.addForm.value.mainPicture = r
       this.bkAPI.sendPost("sportHall",this.addForm.value)
-      .subscribe( r => {
-        this.router.navigate(['/'])
-      })
+      .then( r =>  this.router.navigate(['/']))
     })
     .catch(err => console.log("error ",err))///TODO alert error
 

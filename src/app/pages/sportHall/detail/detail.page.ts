@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute  } from '@angular/router'
+import { ActivatedRoute } from '@angular/router'
 import {BookingApiService} from 'src/app/services/booking-api.service'
 import {SportHall,getSportHall} from 'src/app/models/sportHall.model'
 import { CalendarOptions } from '@fullcalendar/angular'; 
@@ -35,22 +35,22 @@ export class DetailPage implements OnInit {
 
   constructor(private route: ActivatedRoute,private bkAPI:BookingApiService) { }
 
+
   ngOnInit() {
 
 
-    this.route.params.subscribe((params: any) => {//TODO check if it is good => subscribe for params ?
+    this.route.params.subscribe((params: any) => {
       this.bkAPI.sendGet("sportHall/"+params.id).subscribe(response => {
-        console.log("sport hall ",)
-        const sh = getSportHall(response)
-        this.sportHall = sh
-        this.calendarOptions = this.initCalendar
+        console.log("sport hall ")
+        this.sportHall = response
         const booking = []
+        this.calendarOptions = this.initCalendar
         this.sportHall.Bookings.forEach(b => {
           booking.push({ 
-            title: b.message? b.message : "private" ,
-            start: b.start,
-            end: b.end,
-          })
+              title: b.message? b.message : "private" ,
+              start: b.start,
+              end: b.end,
+            })
         });
         this.calendarOptions.events = booking
       })

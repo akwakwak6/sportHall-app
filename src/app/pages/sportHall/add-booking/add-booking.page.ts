@@ -10,15 +10,16 @@ import { AbstractControl, FormControl, Validators,FormBuilder, FormGroup } from 
 })
 export class AddBookingPage implements OnInit {
 
-  private now:Date = new Date()
-  //TODO default = start today 20h 
-  //end = demin 06H
-  // end become ( if earlier than start ) the next day of start 
+  ///default input date 
+  private today:Date = new Date() 
+  private start:Date = new Date(new Date().setDate(this.today.getDate() + 1)) // default start = today + 1
+  private end:Date = new Date(new Date().setDate(this.start.getDate() + 1)) // default end = start + 1
 
   private PLAT_FORM_CREATE: {[key: string]: AbstractControl} = {
-    start: new FormControl(this.now.toISOString(), [Validators.required]),
-    end: new FormControl(this.now.toISOString(), [Validators.required]),
+    start: new FormControl(this.start.toISOString(), [Validators.required]),
+    end: new FormControl(this.end.toISOString(), [Validators.required]),
     message: new FormControl(null),
+    SportHallId: new FormControl(null),
   }
   eventForm: FormGroup;
   private id
@@ -29,16 +30,26 @@ export class AddBookingPage implements OnInit {
   get formControls() { return this.eventForm.controls; }
 
   ngOnInit() {
-    //TODO check if connnected => else go login
-    this.route.params.subscribe((params: any) => {//TODO check if it is good => subscribe for params ?
+    //if not connected => go to login
+    if(this.bkAPI.user === null){
+      console.log('not connected')
+      this.router.navigate(['/user/login'])
+      return
+    }
+    this.eventForm = this.fb.group(this.PLAT_FORM_CREATE);
+    this.route.params.subscribe((params: any) => {
       this.id = params.id
     })
-    this.eventForm = this.fb.group(this.PLAT_FORM_CREATE);
   }
 
   handleSubmitAction(){
-    //TODO check if start > today && start < end && end - start < 3d => error | else send booking
+    //TODO check if start > today && start < end && end - start < 3d => error | else send booking ( it's done in API )
+
+    this.eventForm.value.SportHallId = this.id
     console.log("send",this.eventForm.value)
+    this.bkAPI.sendPost("sportHall/booking",this.eventForm.value)
+    .then(_=> this.router.navigate(['/detail/'+this.id]))
+    .catch( e => console.log("error ",e.error) )//TODO add alert
   }
 
 }

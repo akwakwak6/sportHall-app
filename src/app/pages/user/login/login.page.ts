@@ -35,7 +35,7 @@ export class LoginPage implements OnInit {
     this.isSubmitted = false;
     this.bkAPI.login(this.loginForm.value)
     .then(_=>{
-      this.router.navigate(['/'])
+      this.router.navigate(['/'])//TODO if route in para go to this rout ( add event => login => add event page ) else home
     })
     .catch(e=>{
       console.log('error',e)//TODO add alert

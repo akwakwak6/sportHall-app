@@ -15,7 +15,7 @@ export class SportHall{
     Bookings:Array<Booking>
 }
 
-export function getSportHall(sh:any){//TODO => mapper, maybe easier ?
+export function getSportHall(sh:any){//TODO => remove
     const sportHall = new SportHall()
     sportHall.name = sh.name
     sportHall.address = sh.address
