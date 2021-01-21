@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router'
 import {BookingApiService} from 'src/app/services/booking-api.service'
 import { AbstractControl, FormControl, Validators,FormBuilder, FormGroup } from "@angular/forms";
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-booking',
@@ -24,13 +25,12 @@ export class AddBookingPage implements OnInit {
   eventForm: FormGroup;
   private id
 
-  constructor(private route: ActivatedRoute,private fb: FormBuilder,private bkAPI:BookingApiService,private router: Router) {
+  constructor(private route: ActivatedRoute,private fb: FormBuilder,private bkAPI:BookingApiService,private router: Router,private  alertController: AlertController) {
   }
 
   get formControls() { return this.eventForm.controls; }
 
   ngOnInit() {
-    //if not connected => go to login
     if(this.bkAPI.user === null){
       console.log('not connected')
       this.router.navigate(['/user/login'])
@@ -49,7 +49,12 @@ export class AddBookingPage implements OnInit {
     console.log("send",this.eventForm.value)
     this.bkAPI.sendPost("sportHall/booking",this.eventForm.value)
     .then(_=> this.router.navigate(['/detail/'+this.id]))
-    .catch( e => console.log("error ",e.error) )//TODO add alert
+    .catch( e => {
+      this.alertController.create({
+        header: 'Error',
+        buttons: ['ok']
+      }).then(c => c.present())
+    } )
   }
 
 }

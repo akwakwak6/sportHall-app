@@ -3,6 +3,7 @@ import { AbstractControl, FormControl, Validators,FormBuilder, FormGroup } from 
 import { BookingApiService } from 'src/app/services/booking-api.service'
 import { Router } from '@angular/router'
 import { getBase64, resizeBase64 } from 'base64js-es6'
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add',
@@ -13,8 +14,8 @@ export class AddPage implements OnInit {
 
   private mainPictureFile = null
   private PLAT_FORM_CREATE: {[key: string]: AbstractControl} = {
-    name: new FormControl("le nom", [Validators.required]),//TODO remove default name & address
-    address: new FormControl("loin", [Validators.required]),
+    name: new FormControl(null, [Validators.required]),
+    address: new FormControl(null, [Validators.required]),
     mainPicture : new FormControl(null, [Validators.required])
   }
 
@@ -22,7 +23,7 @@ export class AddPage implements OnInit {
   isSubmitted  =  false;
   mainPicture = null
 
-  constructor(private fb: FormBuilder,private bkAPI:BookingApiService,private router: Router) { }
+  constructor(private fb: FormBuilder,private bkAPI:BookingApiService,private router: Router,private  alertController: AlertController) { }
 
   ngOnInit() {
     this.addForm = this.fb.group(this.PLAT_FORM_CREATE);
@@ -41,8 +42,12 @@ export class AddPage implements OnInit {
       this.bkAPI.sendPost("sportHall",this.addForm.value)
       .then( r =>  this.router.navigate(['/']))
     })
-    .catch(err => console.log("error ",err))///TODO alert error
-
+    .catch(err => {
+      this.alertController.create({
+        header: 'Error',
+        buttons: ['ok']
+      }).then(c => c.present())
+    })
 
   }
   loadFile(f){

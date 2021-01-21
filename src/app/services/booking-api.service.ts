@@ -42,6 +42,12 @@ export class BookingApiService {
     })
   }
 
+  disconnect(){
+    this.headers.delete("Authorization");
+    this.user = null
+    this.userObs$.next(null)
+  }
+
   subscribeUser(action: (value: any) => void): Subscription {
     return this.userObs$.subscribe(action)
   }
@@ -72,13 +78,13 @@ export class BookingApiService {
       this.dbIn.getData(path).subscribe( data => {
         if( data === undefined ){
           this._httpClient.get<any>(this.baseURL+path,  { headers: this.headers }).subscribe(d => {
-            console.log("data not in db result from API : ",d)
+            console.log("data not in db (or too old) result from API : ",d)
             obs.next(d)
             this.dbIn.addData(path,d)
             obs.complete()
           })
         }else{
-          console.log("no need get to API, data in db : ",data)
+          console.log("no need to send get to API, data in db : ",data)
           obs.next(data)
           obs.complete()
         }

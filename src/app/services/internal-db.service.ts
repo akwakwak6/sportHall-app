@@ -13,7 +13,7 @@ export class InternalDbService {
   //setting to save in internal db, result from get path, and how long in minute before reload
   private pathsTime = [
     {is:"^sportHall$", time:1440 },///  60 * 24 = 1440 minutes => 24 hours
-    {is:"^sportHall/[0-9]+", time:1 },
+    //{is:"^sportHall/[0-9]+", time:1 },
   ]
 
   // check if path is in setting, if yes check is not too old, if no send data from db
