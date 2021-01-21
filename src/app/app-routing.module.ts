@@ -33,7 +33,7 @@ const routes: Routes = [
   },
   {
     path: 'add',
-    loadChildren: () => import('./pages/sportHall/add/add.module').then( m => m.AddPageModule)
+    loadChildren: () => import('./pages/sportHall/add-sportHall/add.module').then( m => m.AddPageModule)
   },
 ];
 
