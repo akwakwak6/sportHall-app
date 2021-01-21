@@ -3,7 +3,6 @@ import { AbstractControl, FormControl, Validators,FormBuilder, FormGroup } from 
 import { BookingApiService } from 'src/app/services/booking-api.service'
 import { Router } from '@angular/router'
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -11,7 +10,7 @@ import { Router } from '@angular/router'
 })
 export class LoginPage implements OnInit {
 
-  private PLAT_FORM_CREATE: {[key: string]: AbstractControl} = {//TODO remove default name & pwd => change labell name & msg error
+  private LOGIN_FORM: {[key: string]: AbstractControl} = {//TODO remove default name & pwd => change labell name & msg error
     mail: new FormControl("admin@com", [Validators.required]),
     password: new FormControl("admin", [Validators.required])
   }
@@ -21,7 +20,7 @@ export class LoginPage implements OnInit {
   constructor(private fb: FormBuilder,private bkAPI:BookingApiService,private router: Router) { }
 
   ngOnInit() {
-    this.loginForm = this.fb.group(this.PLAT_FORM_CREATE);
+    this.loginForm = this.fb.group(this.LOGIN_FORM);
   }
 
   get formControls() { return this.loginForm.controls; }
@@ -41,7 +40,9 @@ export class LoginPage implements OnInit {
       console.log('error',e)//TODO add alert
     })
     this.loginForm.reset()
+  }
 
-
+  goToRegister(){
+    this.router.navigate(['/user/register'])
   }
 }

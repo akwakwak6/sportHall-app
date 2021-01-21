@@ -21,23 +21,9 @@ export class BookingApiService {
 
   constructor(private _httpClient : HttpClient,private dbIn:InternalDbService) {}
 
-  subscribeUser(action: (value: any) => void): Subscription {
-    return this.userObs$.subscribe(action)
-  }
-
-  sendPost( path:string,data:any ){
+  private loginFct = (way:string,user:any) => {
     return new Promise<void>( (success,faild) => {
-      this._httpClient.post<any>(this.baseURL+path,data,  { headers: this.headers } )
-      .subscribe(
-        s => success(s),
-        e => faild(e)
-      )
-    })
-  }
-
-  login( user:LoginUser ){
-      return new Promise<void>( (success,faild) => {
-      this._httpClient.post<User>(this.baseURL+"user/login",user)
+      this._httpClient.post<User>(this.baseURL+way,user)
       .subscribe(
         (u : any) => {
           console.log("get response ",u)
@@ -54,6 +40,28 @@ export class BookingApiService {
         }
       )
     })
+  }
+
+  subscribeUser(action: (value: any) => void): Subscription {
+    return this.userObs$.subscribe(action)
+  }
+
+  sendPost( path:string,data:any ){
+    return new Promise<void>( (success,faild) => {
+      this._httpClient.post<any>(this.baseURL+path,data,  { headers: this.headers } )
+      .subscribe(
+        s => success(s),
+        e => faild(e)
+      )
+    })
+  }
+
+  login( user:LoginUser ){
+    return this.loginFct("user/login",user)
+  }
+
+  register( user:User ){
+    return this.loginFct("user/register",user)
   }
 
   // request data from API with get

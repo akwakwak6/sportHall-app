@@ -5,13 +5,16 @@
     <ion-item>
       <ion-label position="floating">Mail</ion-label>
       <ion-input formControlName="mail" ></ion-input>
-      <small *ngIf="isSubmitted && formControls.mail.errors">doit avoir un nom</small>
+      <small *ngIf="isSubmitted && formControls.mail.errors">error in mail</small>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Password</ion-label>
       <ion-input formControlName="password" ></ion-input>
-      <small *ngIf="isSubmitted && formControls.password.errors">doit avoir une adresse</small>
+      <small *ngIf="isSubmitted && formControls.password.errors">mdp error msg</small>
     </ion-item>
     <ion-button type="submit" shape="block" class="ion-margin">OK</ion-button>
   </form>
+  <div class="registerBtn">
+    <ion-button (click)="goToRegister()" color="light" size="small"> pas de compte </ion-button>
+  </div>
 </ion-content>
