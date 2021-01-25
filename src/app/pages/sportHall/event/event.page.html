@@ -1,9 +1,15 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>event</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header></app-header>
 
 <ion-content>
+  <div class="center" *ngIf="event">
+    <p> de {{event.User.name}} du {{event.start | date}} au {{event.end | date}} </p>
+    <p> mail : {{event.User.mail}}  </p>
+    <div *ngIf="event.payed; else elseBlock">
+      <ion-button (click)="confirm(false)" >Annulé</ion-button>
+    </div>
+    <ng-template #elseBlock>
+      <ion-button  (click)="confirm(true)" >Confirme</ion-button>
+    </ng-template>
+  </div>
 
 </ion-content>

@@ -40,7 +40,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/user/roles/set-roles/set-roles.module').then( m => m.SetRolesPageModule)
   },
   {
-    path: 'event',
+    path: 'event/:id',
     loadChildren: () => import('./pages/sportHall/event/event.module').then( m => m.EventPageModule)
   },
 ];

@@ -24,11 +24,11 @@ export class DetailPage implements OnInit {
         const booking = []
         this.initializeCalendarOptions()
         this.sportHall.Bookings.forEach(b => {
-          console.log("event => ",b)
           booking.push({ 
               title: b.message? b.message : "private" ,
               start: b.start,
               end: b.end,
+              id:b.id,
               backgroundColor: b.payed ? '#11aa11' : '#e08c48'
             })
         });
@@ -55,17 +55,16 @@ export class DetailPage implements OnInit {
         minute: '2-digit',
         hour12: false
       },
-      eventClick: i => this.handleeventClick(i),//TODO add event if only modo
+      eventClick: i => this.handleeventClick(i),
       dateClick : i => this.handleDateClick(i),
 
     }
   }
 
   handleeventClick(s: any){
-    console.log("click event => ",s.event.title,s.event.start)
-    //if(this.bkAPI.user &&  this.bkAPI.user.Roles.find(r => r.name === "modo"))//TODO put the if in calendarOptions
-      this.router.navigate(['/event'])
-
+    console.log("click event => ",s.event.title," => ",s.event.start)
+    if(this.bkAPI.user &&  this.bkAPI.user.Roles.find(r => r.name === "modo"))
+      this.router.navigate([`/event/${s.event.id}`])
   }
   handleDateClick(s: any){
     console.log("click date => ",s.dateStr)
