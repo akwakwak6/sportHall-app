@@ -1,0 +1,33 @@
+<app-header></app-header>
+
+<ion-content>
+
+  <ion-grid class="list-center">
+    <ion-row class="ion-align-items-center full-width">
+      <ion-col>
+        <h1>Nom</h1>
+      </ion-col>
+      <ion-col>
+        <h1>Modo</h1>
+      </ion-col>
+      <ion-col>
+        <h1>Admin</h1>
+      </ion-col>
+    </ion-row>
+    <ion-item *ngFor="let u of users;let i=index;">
+      <ion-row class="ion-align-items-center full-width">
+        <ion-col>
+          {{u.user.name}}
+        </ion-col>
+        <ion-col>
+          <ion-checkbox [(ngModel)]="u.roles.modo" (ionChange)="changeRole(i,'modo')" ></ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-checkbox [(ngModel)]="u.roles.admin" (ionChange)="changeRole(i,'admin')" ></ion-checkbox>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-grid>
+
+
+</ion-content>

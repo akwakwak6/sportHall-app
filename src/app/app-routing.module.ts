@@ -35,6 +35,14 @@ const routes: Routes = [
     path: 'add',
     loadChildren: () => import('./pages/sportHall/add-sportHall/add.module').then( m => m.AddPageModule)
   },
+  {
+    path: 'setroles',
+    loadChildren: () => import('./pages/user/roles/set-roles/set-roles.module').then( m => m.SetRolesPageModule)
+  },
+  {
+    path: 'event',
+    loadChildren: () => import('./pages/sportHall/event/event.module').then( m => m.EventPageModule)
+  },
 ];
 
 @NgModule({

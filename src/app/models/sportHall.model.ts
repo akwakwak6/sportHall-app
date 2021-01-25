@@ -4,6 +4,7 @@ class Booking{
     start:Date
     end:Date
     message:string
+    payed:boolean
 }
 
 export class SportHall{
@@ -13,23 +14,4 @@ export class SportHall{
     id:number
     mainPicture:string
     Bookings:Array<Booking>
-}
-
-export function getSportHall(sh:any){//TODO => remove
-    const sportHall = new SportHall()
-    sportHall.name = sh.name
-    sportHall.address = sh.address
-    sportHall.id = sh.id
-    sportHall.mainPicture = sh.mainPicture
-    sportHall.Bookings = []
-    sh.Bookings.forEach(b => {
-        sportHall.Bookings.push( {
-            id : b.id,
-            start: new Date(b.start),
-            end: new Date(b.end),
-            message: b.message
-        } )
-    });
-    return sportHall
-    
 }
