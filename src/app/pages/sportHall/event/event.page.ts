@@ -33,14 +33,14 @@ export class EventPage implements OnInit {
       return this.alertController.create({
         header: c ? 'la réservation est confirmée' : 'la réservation est annulée',
         buttons: ['ok']
-      }).then(c => c.present())
+      }).then(a => a.present())
     })
     .then(_ => this.router.navigate(['detail/'+this.event.SportHallId]))
     .catch(  _ =>{
       this.alertController.create({
         header: c ? 'erreur pour confirmer' : 'erreur pour annuler',
         buttons: ['ok']
-      }).then(c => c.present())
+      }).then(a => a.present())
     })
   }
 
